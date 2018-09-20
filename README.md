@@ -9,9 +9,17 @@ the following:
 4)The tags each post has.
 
 
-PROGRAMMING LANGAUGE:Python 3.7.o
+Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
 
-Framework:Flask8,mongoDB
+
+Programming Language:Python 3.7.o
+
+Programming Ide:pyscripter,Atom
+
+Frameworks:Flask8,mongoDB,
+
+Python tools/Libraries: python-virtual,flask-wtf
 
 Markup Languages: JSON,HTTP,HTML5,CSS
+
 
