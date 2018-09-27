@@ -27,4 +27,4 @@ Markup Languages: JSON,HTTP,HTML5,CSS
 
 
 
-![alt text](Medium-Publications-Application/MediumAppArchitecture.PNG "APPLICATION ARCHITECTURE")
+![alt text](MediumAppArchitecture.PNG "APPLICATION ARCHITECTURE")
