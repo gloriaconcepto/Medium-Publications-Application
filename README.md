@@ -26,3 +26,5 @@ Python tools/Libraries: python-virtual,flask-wtf
 Markup Languages: JSON,HTTP,HTML5,CSS
 
 
+
+![alt text](Medium-Publications-Application/MediumAppArchitecture.PNG "APPLICATION ARCHITECTURE")
