@@ -1,3 +1,6 @@
+PROJECT TITLE:  MEDIUM PUBLICATIONS
+
+PROJECT DESCRIPTION:
 An application that displays a user's Medium posts.On submission the app will display
 the following:
 1) The user's name
