@@ -1,6 +1,6 @@
-#PROJECT TITLE:  MEDIUM PUBLICATIONS
+# PROJECT TITLE:  MEDIUM PUBLICATIONS
 
-##PROJECT DESCRIPTION:
+## PROJECT DESCRIPTION:
 An application that displays a user's Medium posts.On submission the app will display
 the following:
 1) The user's name
@@ -15,27 +15,27 @@ the following:
 Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
 
 
-###Programming Language:
+### Programming Language:
                
                Python 3.7.o
 
-###Programming Ide:
+### Programming Ide:
 
        pyscripter,Atom
 
-###Frameworks:
+### Frameworks:
           
           Flask8,mongoDB,
 
-###Python tools/Libraries: 
+### Python tools/Libraries: 
 
          python-virtual,flask-wtf
 
-###Markup Languages: 
+### Markup Languages: 
              
              JSON,HTTP,HTML5,CSS
 
-##APPLICATION ARCHITECTURE
+## APPLICATION ARCHITECTURE
 
 ![alt text](MediumAppArchitecture.PNG "APPLICATION ARCHITECTURE")
 
