@@ -39,4 +39,20 @@ Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
 
 ![alt text](MediumAppArchitecture.PNG "APPLICATION ARCHITECTURE")
 
-## 
+## APPLICATION WORK FLOW
+
+![alt text](MediumAppWorkFlow.PNG "ARCHITECTURE WORK FLOW")
+
+## APPLICATION HOME PAGE
+
+![alt text](MediumAppHomePage.PNG "ARCHITECTURE HOME PAGE")
+
+## APPLICATION ABOUT PAGE
+
+![alt text](MediumAppAboutPage.PNG "ARCHITECTURE ABOUT PAGE")
+
+## APPLICATION RESULT PAGE
+
+![alt text](MediumAppResultPage.PNG "ARCHITECTURE RESULT PAGE")
+
+
