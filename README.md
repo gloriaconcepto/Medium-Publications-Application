@@ -25,11 +25,11 @@ Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
 
 ### Frameworks:
           
-          Flask8,mongoDB,
+          Flask8,mariaDB,
 
 ### Python tools/Libraries: 
 
-         python-virtual,flask-wtf
+         python-virtual,flask-wtf,mysql.connector,requests
 
 ### Markup Languages: 
              
