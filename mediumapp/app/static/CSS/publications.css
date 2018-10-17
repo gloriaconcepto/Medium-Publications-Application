@@ -1,0 +1,32 @@
+.line {
+    border: 1px solid #008B8B;
+    
+}
+
+.img1 {
+    float: right;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+.img2 {
+    float: left;
+}
+.pubimg {
+    max-width: 200px;
+    width: 100px;
+    height: 100px;
+    float: left;
+
+}
+.textPad{
+    padding: -80px;
+}
+.words{
+    padding: 10px;
+}
+.colorlink{
+   color: blue 
+}

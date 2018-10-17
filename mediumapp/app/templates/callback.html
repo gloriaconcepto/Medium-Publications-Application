@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+{% extends "layout1.html" %}
+{% block content %}
+<html>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+  <div class="w3-container">
+      <div class="w3-panel w3-blue">
+          <div>
+              <p><img src="{{user_image}}" alt="medium.com"class="avatar"></p>
+            </div>
+          
+   
+  <div class="FontPanel">
+      <h6> Hey Welcome to GloriaSoft demo app using medium Api</h6>
+      <p> User Medium Name :  {{user_profile}}</p>
+      <p>Number Of Publications Subscribe :{{count_length}}</p>
+      <p>Number of Posts : {{total_posts}}</p>
+                            
+  </div>
+  </div>
+</div>
+   <p> </p> 
+   <p> </p>
+   <div class="words"><h3>List of Publications Subscribe </h3></div>
+   {% if count_length >=5 %}
+   <div class="line">
+      <div class="clearfix">
+      <img src="{{image_pub[0]}}" alt="medium.com" class="pubimg"> 
+       <div class="textPad"> 
+        {{pub_name[0]}}
+       <p>{{desrip_pub[0]}}</p>
+       <p>
+       <div>
+       <a href="{{url_pub[0]}}" target="_blank" class="colorlink">{{url_pub[0]}}</a> 
+      </div>
+      </p>
+      </div>
+    </div>
+  </div> 
+  <div><h2></h2> </div>
+  <div class="line">
+      <div class="clearfix">
+      <img src="{{image_pub[1]}}" alt="medium.com" class="pubimg"> 
+       <div class="textPad"> 
+        {{pub_name[1]}}
+       <p>{{desrip_pub[1]}}</p>
+       <a href="{{url_pub[1]}}" target="_blank" class="colorlink">{{url_pub[1]}}</a> 
+      </div>
+    </div>
+  </div>
+  <div><h2></h2> </div>
+  <div class="line">
+      <div class="clearfix">
+      <img src="{{image_pub[2]}}" alt="medium.com" class="pubimg"> 
+       <div class="textPad"> 
+        {{pub_name[2]}}
+       <p>{{desrip_pub[2]}}</p>
+       <a href="{{url_pub[2]}}" target="_blank" class="colorlink">{{url_pub[2]}}</a> 
+      </div>
+    </div>
+  </div>
+  <div><h2></h2> </div>
+  <div class="line">
+      <div class="clearfix">
+      <img src="{{image_pub[3]}}" alt="medium.com" class="pubimg"> 
+       <div class="textPad"> 
+        {{pub_name[3]}}
+       <p>{{desrip_pub[3]}}</p>
+       <a href="{{url_pub[3]}}" target="_blank" class="colorlink">{{url_pub[3]}}</a> 
+      </div>
+    </div>
+  </div>
+  <div><h2></h2> </div>
+  <div class="line">
+      <div class="clearfix">
+      <img src="{{image_pub[4]}}" alt="medium.com" class="pubimg"> 
+       <div class="textPad"> 
+        {{pub_name[4]}}
+       <p>{{desrip_pub[4]}}</p>
+       <a href="{{url_pub[4]}}" target="_blank" class="colorlink">{{url_pub[4]}}</a> 
+      </div>
+    </div>
+  </div>
+        
+  {% endif %} 
+  {% if count_length <=3 and count_length >=2 %}  
+  <div class="line">
+    <div class="clearfix">
+    <img src="{{image_pub[0]}}" alt="medium.com" class="pubimg"> 
+     <div class="textPad"> 
+      {{pub_name[0]}}
+     <p>{{desrip_pub[0]}}</p>
+     <a href="{{url_pub[0]}}" target="_blank" class="colorlink">{{url_pub[0]}}</a> 
+    </div>
+  </div>
+</div> 
+<div><h2></h2> </div> 
+<div class="line">
+  <div class="clearfix">
+  <img src="{{image_pub[1]}}" alt="medium.com" class="pubimg"> 
+   <div class="textPad"> 
+    {{pub_name[1]}}
+   <p>{{desrip_pub[1]}}</p>
+   <a href="{{url_pub[1]}}" target="_blank" class="colorlink">{{url_pub[1]}}</a> 
+  </div>
+</div>
+</div> 
+<div><h2></h2> </div> 
+{% endif %}
+{% if count_length ==4 %}
+<div class="line">
+  <div class="clearfix">
+  <img src="{{image_pub[0]}}" alt="medium.com" class="pubimg"> 
+   <div class="textPad"> 
+    {{pub_name[0]}}
+   <p>{{desrip_pub[0]}}</p>
+   <a href="{{url_pub[0]}}" target="_blank" class="colorlink">{{url_pub[0]}}</a> 
+  </div>
+</div>
+</div> 
+<div><h2></h2> </div>
+<div class="line">
+  <div class="clearfix">
+  <img src="{{image_pub[1]}}" alt="medium.com" class="pubimg"> 
+   <div class="textPad"> 
+    {{pub_name[1]}}
+   <p>{{desrip_pub[1]}}</p>
+   <a href="{{url_pub[1]}}" target="_blank" class="colorlink">{{url_pub[1]}}</a> 
+  </div>
+</div>
+</div>
+<div><h2></h2> </div>
+<div class="line">
+  <div class="clearfix">
+  <img src="{{image_pub[2]}}" alt="medium.com" class="pubimg"> 
+   <div class="textPad"> 
+    {{pub_name[2]}}
+   <p>{{desrip_pub[2]}}</p>
+   <a href="{{url_pub[2]}}" target="_blank" class="colorlink">{{url_pub[2]}}</a> 
+  </div>
+</div>
+</div>
+<div><h2></h2> </div>
+<div class="line">
+  <div class="clearfix">
+  <img src="{{image_pub[3]}}" alt="medium.com" class="pubimg"> 
+   <div class="textPad"> 
+    {{pub_name[3]}}
+   <p>{{desrip_pub[3]}}</p>
+   <a href="{{url_pub[3]}}" target="_blank" class="colorlink">{{url_pub[3]}}</a> 
+  </div>
+</div>
+</div>
+{% endif %}
+{% if count_length ==1 %}
+<div class="line">
+  <div class="clearfix">
+  <img src="{{image_pub[0]}}" alt="medium.com" class="pubimg"> 
+   <div class="textPad"> 
+    {{pub_name[0]}}
+   <p>{{desrip_pub[0]}}</p>
+   <a href="{{url_pub[0]}}" target="_blank" class="colorlink">{{url_pub[0]}}</a> 
+  </div>
+</div>
+</div>
+{% endif %}  
+{% if count_length ==0 %}
+<div><p>No subscription</p></div>
+{% endif %}          
+<div><h2></h2> </div>
+<div><h2>USER POSTS </h2></div>
+{% if total_posts >=5 %}
+<div class="line">
+  <div class="clearfix">
+     <div class="textPad"> 
+    <p><h5>POST TITLE:</h5>  {{rss_titles[0]}}</p>
+   
+      {% if rss_tags|length>=1 %}
+      <h5>Tags:</h5> 
+     
+      {% for dict_item in rss_tags[0] %}
+         {% for key, value in dict_item.items() %}
+              {% if key == "term" %} 
+               
+              <p class="tag">{{value}}</p>
+                {% endif %}
+           {% endfor %}
+         {% endfor %}
+        
+        {% else %}
+         <p>No Tags for this Post  </p> 
+      {% endif %}
+   <div>
+   <a href="{{rss_links[0]}}" target="_blank" class="colorlink">{{rss_links[0]}}</a> 
+  </div>
+  </div>
+</div>
+</div>
+<div class="line">
+  <div class="clearfix">
+     <div class="textPad"> 
+    <p><h5>POST TITLE:</h5>  {{rss_titles[1]}}</p>
+   
+      {% if rss_tags|length>=1 %}
+      <h5>Tags:</h5> 
+     
+      {% for dict_item in rss_tags[1] %}
+         {% for key, value in dict_item.items() %}
+              {% if key == "term" %} 
+               
+              <p class="tag">{{value}}</p>
+                {% endif %}
+           {% endfor %}
+         {% endfor %}
+        
+        {% else %}
+         <p>No Tags for this Post  </p> 
+      {% endif %}
+   <div>
+   <a href="{{rss_links[0]}}" target="_blank" class="colorlink">{{rss_links[1]}}</a> 
+  </div>
+  </div>
+</div>
+</div>
+<div><h2></h2> </div>
+<div class="line">
+  <div class="clearfix">
+     <div class="textPad"> 
+    <p><h5>POST TITLE:</h5>  {{rss_titles[2]}}</p>
+   
+      {% if rss_tags|length>=1 %}
+      <h5>Tags:</h5> 
+     
+      {% for dict_item in rss_tags[2] %}
+         {% for key, value in dict_item.items() %}
+              {% if key == "term" %} 
+               
+              <p class="tag">{{value}}</p>
+                {% endif %}
+           {% endfor %}
+         {% endfor %}
+        
+        {% else %}
+         <p>No Tags for this Post  </p> 
+      {% endif %}
+    <div>
+   <a href="{{rss_links[0]}}" target="_blank" class="colorlink">{{rss_links[2]}}</a>
+  </div> 
+  </div>
+</div>
+</div>
+<div><h2></h2> </div>
+
+{% endif %}     
+{% if total_posts >=5 %}
+<div class="line">
+  <div class="clearfix">
+     <div class="textPad"> 
+    <p><h5>POST TITLE:</h5>  {{rss_titles[0]}}</p>
+   
+      {% if rss_tags|length>=1 %}
+      <h5>Tags:</h5> 
+     
+      {% for dict_item in rss_tags[0] %}
+         {% for key, value in dict_item.items() %}
+              {% if key == "term" %} 
+               
+              <p class="tag">{{value}}</p>
+                {% endif %}
+           {% endfor %}
+         {% endfor %}
+        
+        {% else %}
+         <p>No Tags for this Post  </p> 
+      {% endif %}
+   <div>
+   <a href="{{rss_links[0]}}" target="_blank" class="colorlink">{{rss_links[0]}}</a> 
+  </div>
+  </div>
+  {{% endif %}}   
+
+       
+       
+         
+      
+    
+     
+    
+        
+
+       
+  <p>{{testing_1}}</p>
+ 
+{% endblock %}
+</body>
+</html>
