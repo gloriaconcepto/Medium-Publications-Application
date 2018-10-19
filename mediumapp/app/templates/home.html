@@ -4,21 +4,26 @@
 <html>
 
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <body>
-  <div class="wrap">
-     <div class="search">
+    <div class="w3-container">
+        <div class="w3-panel w3-blue">
+                       
+     
+    <div class="FontPanel">
+        <h1>Welcome to GloriaSoft demo app using medium SDK python</h1>
+        <h6>This demo app was to developed for demonstration on how to use REST and CRUD principles with python</h6>
 
-        <form action="" method="POST"role="form">
-           {{ form.name(class="searchTerm", placeholder="enter your medium user name") }}
-
-
-           <button type="submit" class="searchButton" formmethod="post" >
-             <i class="fa fa-search"></i>
-             </button>
-           </form>
-        </div>
-     </div>
+      </div>
+    </div>
+                            
+   
+         <form action="{{url_for('resultDisplay')}}">
+     <div class="wrapper">
+      
+      <button type="submit" class="buttoncenter"  ><p class="FontPanel">Medium Profile</p></button>
+  </div>
+</form>
    {% endblock %}
    </body>
    </html>

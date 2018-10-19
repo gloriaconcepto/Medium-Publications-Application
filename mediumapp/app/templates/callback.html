@@ -219,7 +219,7 @@
          <p>No Tags for this Post  </p> 
       {% endif %}
    <div>
-   <a href="{{rss_links[0]}}" target="_blank" class="colorlink">{{rss_links[1]}}</a> 
+   <a href="{{rss_links[1]}}" target="_blank" class="colorlink">{{rss_links[1]}}</a> 
   </div>
   </div>
 </div>
@@ -246,7 +246,7 @@
          <p>No Tags for this Post  </p> 
       {% endif %}
     <div>
-   <a href="{{rss_links[0]}}" target="_blank" class="colorlink">{{rss_links[2]}}</a>
+   <a href="{{rss_links[2]}}" target="_blank" class="colorlink">{{rss_links[2]}}</a>
   </div> 
   </div>
 </div>
@@ -254,7 +254,7 @@
 <div><h2></h2> </div>
 
 {% endif %}     
-{% if total_posts >=5 %}
+{% if total_posts >=2 and total_posts <=4 %}
 <div class="line">
   <div class="clearfix">
      <div class="textPad"> 
@@ -275,15 +275,86 @@
         {% else %}
          <p>No Tags for this Post  </p> 
       {% endif %}
-   <div>
-   <a href="{{rss_links[0]}}" target="_blank" class="colorlink">{{rss_links[0]}}</a> 
+    <div>
+   <a href="{{rss_links[0]}}" target="_blank" class="colorlink">{{rss_links[0]}}</a>
+  </div> 
   </div>
+</div>
+</div>
+<div><h2></h2> </div>
+<div class="line">
+  <div class="clearfix">
+     <div class="textPad"> 
+    <p><h5>POST TITLE:</h5>  {{rss_titles[1]}}</p>
+   
+      {% if rss_tags|length>=1 %}
+      <h5>Tags:</h5> 
+     
+      {% for dict_item in rss_tags[1] %}
+         {% for key, value in dict_item.items() %}
+              {% if key == "term" %} 
+               
+              <p class="tag">{{value}}</p>
+                {% endif %}
+           {% endfor %}
+         {% endfor %}
+        
+        {% else %}
+         <p>No Tags for this Post  </p> 
+      {% endif %}
+    <div>
+   <a href="{{rss_links[1]}}" target="_blank" class="colorlink">{{rss_links[1]}}</a>
+  </div> 
   </div>
-  {{% endif %}}   
-
-       
-       
-         
+</div>
+</div>
+<div><h2></h2> </div>
+{% endif %}
+{% if total_posts==1%}
+<div class="line">
+  <div class="clearfix">
+     <div class="textPad"> 
+    <p><h5>POST TITLE:</h5>  {{rss_titles[0]}}</p>
+   
+      {% if rss_tags|length>=1 %}
+      <h5>Tags:</h5> 
+     
+      {% for dict_item in rss_tags[0] %}
+         {% for key, value in dict_item.items() %}
+              {% if key == "term" %} 
+               
+              <p class="tag">{{value}}</p>
+                {% endif %}
+           {% endfor %}
+         {% endfor %}
+        
+        {% else %}
+         <p>No Tags for this Post  </p> 
+      {% endif %}
+    <div>
+   <a href="{{rss_links[0]}}" target="_blank" class="colorlink">{{rss_links[0]}}</a>
+  </div> 
+  </div>
+</div>
+</div>
+<div><h2></h2> </div>
+{% endif %}
+{% if total_posts==0 %}
+<div class="line">
+  <div class="clearfix">
+     <div class="textPad"> 
+    <h6>Hey no post yet!</h6>
+  </div>
+</div>
+</div>
+<div><h2></h2> </div>
+{% endif %}       
+<p>{{testing_1}}</p>
+ 
+{% endblock %}
+</body>
+</html>    
+      
       
     
      
@@ -291,8 +362,4 @@
         
 
        
-  <p>{{testing_1}}</p>
- 
-{% endblock %}
-</body>
-</html>
+  
