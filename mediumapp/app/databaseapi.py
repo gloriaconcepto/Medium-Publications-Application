@@ -1,0 +1,93 @@
+#-------------------------------------------------------------------------------
+# Name: medium demo app database
+# Purpose: database
+#
+# Author:      mmk
+#
+# Created:     17/10/2018
+# Copyright:   (c) mmk 2018
+# Licence:     <gloriaconcepto>
+#------------------------------------------------------------------------------
+import pymongo
+from datetime import datetime
+
+
+
+myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+
+
+
+
+class DataBase(object):
+    ''' A Class That Stores all the database methods'''
+
+    def __init__(self):
+        #intialise the object and set properties
+        self.database_name = myclient["mediumdatabase"]
+        self.database_collection = self.database_name["userdetails"]
+        self.data_value={}
+        #Properties that help in actual storing it to mongo
+        self.data_storage=None
+
+
+    def insert_data(self,user_details,publication_details,time):
+         '''Function to insert database'''
+
+        #check if user data already in the database
+        #then just update
+
+         if(self.database_collection.count()>=1):
+              #first get rid of all datas
+
+               self.data_storage=self.database_collection.delete_many({})
+               #insert the data
+               self.data_value['userdetails']=user_details
+               self.data_value['publications']=publication_details
+               self.data_value['time']=time
+               self.data_storage=self.database_collection.insert_one(self.data_value)
+
+               pass
+        #else insert the data
+         else:
+             #insert  datas
+             self.data_value['userdetails']=user_details
+             self.data_value['publications']=publication_details
+             self.data_value['time']=time
+             self.data_storage=self.database_collection.insert_one(self.data_value)
+
+
+
+
+    #function to retrive the data this will be modified to insert password to prevent anyone having acess to the database.
+
+    def retrive_data(self):
+        ''' function to return the user and publication details'''
+
+        user_datas =list(self.database_collection.find())
+        return user_datas
+
+
+    #function to fetch out time and return a boolean value
+    def is_greater_than_cach_time(self,new_time):
+        '''method that return a boolean value determining if the time is less or greater than 5min'''
+        user_data=self.retrive_data()
+        #get the old time the data was inserted
+        old_time=user_data[0]['time']
+
+        time_delta = new_time - old_time
+        #convert it to min
+        time_checker= int((time_delta.days + time_delta.seconds)/60)
+        #check if it is greater than 5 min or not
+        if(time_checker<5):
+            return True
+        else:
+            return False
+
+
+
+
+def main():
+
+  pass
+if __name__ == '__main__':
+    main()
