@@ -12,23 +12,45 @@ from medium import Client
 import feedparser
 import os
 from markupsafe import Markup
-#app configuration
+#import database function from the model folder
+from databaseapi import DataBase
+#data for time..
+from datetime import datetime
+
+
+#========================app configuration=======================================
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '95f5522f07d05fc9daffab6b7aecbb131f526b3fa3ff4280'
-#ngrok link
-ngrok_link ="https://c0dcc7f0.ngrok.io"
+#==================ngrok link===================================================
+
+ngrok_link ="https://32527600.ngrok.io"
+
+#=========================list to store rss details=============================
+#store posts title of the user
+rss_titles=[]
+#store tags of the user
+rss_tags=[]
+#store link to the post
+rss_links=[]
+#=========================list to store publications details====================
+#empty list to store name of publication
+pub_name=[]
+#empty list to store description of publication
+desrip_pub=[]
+#empty list to store image of publication
+image_pub=[]
+#empty list to store  publication url
+url_pub=[]
+#===============================================================================
 
 
+database=DataBase()
+
+#set refresh button click to false
+refresh_button_click=False
 
 
-
-
-# (Send the user to the authorization URL to obtain an authorization code.)
-
-# Exchange the authorization code for an access token.
-
-#auth = client.exchange_authorization_code("YOUR_AUTHORIZATION_CODE", "http://127.0.0.1:5000/resultDisplay/callback/medium")
 
 #class for the search form
 class SearchButton(Form):
@@ -40,39 +62,17 @@ class SearchButton(Form):
 #route to the app page with a post method to authenticate the user if it have a valid  medium account....#redirect to medium website...
 @app.route('/', methods = ['GET', 'POST'])
 def home():
-        name =''
+         name =''
 
-        #home page rendering...
-        #set the default page to render a default medium user account
-        #if the page is search redirect to another page with the same layout
-        #save the data tenporary for 5 min in the database then ..more ideas to come....
-        form = SearchButton()
+         #set the refresh_button click to true
+         global refresh_button_click
 
-         #if the submit button is click get the user name:
-        if request.method=="POST":
-            #flash(f'name is {{form.name}}','sucess')
-            name=request.form['name']
-
-            #return redirect(url_for('about'),name=name)
-            return render_template('resultDisplay.html',name=name)
+         refresh_button_click=True
 
 
-
-         #if request.method == 'POST' :
-            # name=request.form['name']
-        # if form.validate_on_submit():
-         #          name = form.name.data
-          #         form.name.data=''
-
-           #        return  render_template('about.html')
-
-
-
-         #elif request.method == 'GET':
-         #else:
-         #  flash("hey")  #flash work when a variable is created and the variable is capture at the html form.
-        return render_template('home.html',form=form)
+         return render_template('home.html')
         #now how to render a post method...
+
 
 def get_current_publications(user_id,acess_token):
 
@@ -82,17 +82,10 @@ def get_current_publications(user_id,acess_token):
           get_pub = Client(application_id="45ec1ddf13cb", application_secret="b42623c0f2ee207a6872a76c0bc7c2eb88411a77")
 
           return requests.request("GET",url,headers = { "Accept": "application/json","Accept-Charset": "utf-8", "Authorization": "Bearer %s" % token,})
-          #return get_pub._request("GET",url2)
 
 
-#empty list to store name of publication
-pub_name=[]
-#empty list to store description of publication
-desrip_pub=[]
-#empty list to store image of publication
-image_pub=[]
-#empty list to store  publication url
-url_pub=[]
+
+
 
 # A RSS FEEDER FUNCTION
 def get_medium(user_name):
@@ -100,22 +93,8 @@ def get_medium(user_name):
     feed = feedparser.parse(medium_feed)
     first_article = feed['entries']
     return first_article
-    ''' return """<html>
-    <body>
-    <h1>Headlines </h1>
-    <b>{0}</b> </ br>
-    <i>{1}</i> </ br>
-    <p>{2}</p> </ br>
-    </body>
-    </html>""".format(first_article.get("title"), first_article.
-    get("link"), first_article.get("post")) '''
 
-#store posts title of the user
-rss_titles=[]
-#store tags of the user
-rss_tags=[]
-#store link to the post
-rss_links=[]
+
 
 #A FUCNTION TO STORE DATA GOTTEN FROM MEDIUM RSS FEEDER.
 def get_medium_rss_data(feed_data):
@@ -133,16 +112,138 @@ def get_medium_rss_data(feed_data):
                 pass
 
 
+def get_publications_data(pub_lists):
+
+            for dict_item in pub_lists:
+                for key,value in dict_item.items():
+                    if key=="id":
+
+                      pass
+                    else:
+                        if key=="name":
+                            pub_name.append(value)
+                        if key=="description":
+                            desrip_pub.append(value)
+                        if key=="imageUrl":
+                            image_pub.append(value)
+                        if key=="url":
+                            url_pub.append(value)
 
 
 
 
 
 @app.route('/resultDisplay/callback/medium')
-def callback():
-    #authentication process to get the acess token
-    # Exchange the authorization code for an access token.
-    pass
+def call_back():
+       global refresh_button_click
+       global total_posts
+       global count_length
+       global user_profile
+       global user_image
+       global user_type
+       global pub_name
+       global desrip_pub
+       global image_pub
+       global url_pub
+       global rss_link
+
+
+
+       if ( refresh_button_click==True):
+            #authentication process to get the acess token
+            # Exchange the authorization code for an access token.
+            client = Client(application_id="45ec1ddf13cb", application_secret="b42623c0f2ee207a6872a76c0bc7c2eb88411a77")
+            #get_pub = Client(application_id="45ec1ddf13cb", application_secret="b42623c0f2ee207a6872a76c0bc7c2eb88411a77")
+            secret = request.args.get("code")
+            auth = client.exchange_authorization_code(secret,"{}/resultDisplay/callback/medium".format(ngrok_link))
+
+            client.access_token = auth["access_token"]
+            # Get profile details of the user identified by the access token.
+            user = client.get_current_user()
+
+            user_profile=user["username"]
+            user_image=user["imageUrl"]
+            user_id=user["id"]
+            user_type=type(user)
+            token=auth["access_token"]
+
+
+            publications = get_current_publications(user_id,token)
+
+
+
+            json_data_type = json.loads(publications.text) #publications.json()
+            data_list=json_data_type["data"]
+
+            #capture the data in the database....
+            database.insert_data(user,data_list,datetime.now())
+
+            # To determined the length of the publication..
+            count_length = len(data_list)
+
+
+
+            #testing
+            #rss_links1=rss_feed[1].get("link")
+
+            get_publications_data(data_list)
+            '''  for dict_item in data_list:
+                for key,value in dict_item.items():
+                    if key=="id":
+
+                      pass
+                    else:
+                        if key=="name":
+                            pub_name.append(value)
+                        if key=="description":
+                            desrip_pub.append(value)
+                        if key=="imageUrl":
+                            image_pub.append(value)
+                        if key=="url":
+                            url_pub.append(value)
+
+                                               '''
+                       #person_data["name"]
+
+              #get the user feeder data
+            name=str(user["username"])
+            rss_feed=get_medium(name)
+
+            #store relevant data from the rss_feed to the rss_list
+            get_medium_rss_data(rss_feed)
+
+
+
+            #get the total posts of the user
+            total_posts=len(rss_feed)
+
+            #set refresh button click to false.
+            refresh_button_click = False
+
+            return render_template('callback.html',total_posts=total_posts,count_length=count_length,user_profile=user_profile,user_image=user_image,user_type=user_type,pub_name=pub_name,desrip_pub=desrip_pub,image_pub=image_pub,url_pub=url_pub,rss_links=rss_links,rss_tags=rss_tags,rss_titles=rss_titles)
+
+       else:
+
+            if(database.is_greater_than_cach_time(datetime.now())):
+                 #get datas from the database
+                 new_data=database.retrive_data()
+                 #insert it back to the lists....
+                 user_details=new_data[0]['userdetails']
+                 pub_details=new_data[0]['publications']
+
+                 #assigned it back to list variables  for user details and publications details
+                 user_profile=user_details['username']
+                 user_image=user_details['imageUrl']
+                 user_id=user_details['id']
+                 user_type=type(user_details)
+
+                 get_publications_data(pub_details)
+
+
+
+                 return render_template('callback.html',total_posts=total_posts,count_length=count_length,user_profile=user_profile,user_image=user_image,user_type=user_type,pub_name=pub_name,desrip_pub=desrip_pub,image_pub=image_pub,url_pub=url_pub,rss_links=rss_links,rss_tags=rss_tags,rss_titles=rss_titles)
+            else:
+                  return render_template('callback.html',total_posts=total_posts,count_length=count_length,user_profile=user_profile,user_image=user_image,user_type=user_type,pub_name=pub_name,desrip_pub=desrip_pub,image_pub=image_pub,url_pub=url_pub,rss_links=rss_links,rss_tags=rss_tags,rss_titles=rss_titles)
 
 @app.route('/about/')
 def about():
