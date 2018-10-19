@@ -7,9 +7,11 @@ the following:
 
 2) The user's avatar/image if available.
 
-3)Links to user's 5 recent posts.
+3)Number of publications subscribe by the user
+ 
+4) Links to user's 5 recent posts.
 
-4)The tags each post has.
+5)The tags each post has.
 
 
 Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
@@ -25,7 +27,7 @@ Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
 
 ### Frameworks:
           
-          Flask8,mariaDB,
+          Flask8,monogdb,
 
 ### Python tools/Libraries: 
 
