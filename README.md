@@ -16,7 +16,97 @@ the following:
 
 Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
 
+## SET UP FOR INSTALLING THE APP AND RUN UNIT TEST :
+                                                   
+   1) Clone the repository to your local machine favourite directories:
+  
+   2) From your cmd (windows) cd your directory to Script directory:
+     ###
+        eg  yourfavouritedirectory/mediumapp/venv/Scripts/
+        
+   3) Activate your virtual environment by typing "activate" once inside the Script directory in your cmd..
+     ###
+        -activate
+ 
+ 4)Installing dependencies
+    
+   ###
+           pip install -r requirements.txt
+  
+  
+   5)Change your directory to the folder name "app" which is inside the "mediumapp" folder
+     ###
+        eg yourfavouritedirectory/mediumapp/app/
+        
+        
+  ### HOW TO RUN THE MAIN APP :
+                               Install Mongodb
+                               Install ngrok if not install in your system already
+                               Run ngrok 
+                               In the ngrok type:  ngrok http 5000
+                               create a medium account link:https://medium.com/
+                               Go to setting >Developers>Manage Applications
+                               Generate Client ID and ClientSecret
+                               For callback url link:
+                                    copy the https links from the ngrok link and insert it e.g
+                                    "yournewngroklink"/resultDisplay/callback/medium
+                              Click save.
+                              
+                              Open app.py script inside the app folder which is inside the mediumapp folder,with your favourite py ide.
+                              
+                              Assign the following values to the following variables:
+                              
+                              medium_app_id="paste your ClientID gotten from medium here"
 
+                              medium_app_secret = "paste your ClientSecret gotten from medium here"
+                              
+                              
+                              ngrok_link ="paste https ngrok link gotten from ngrok"
+                              
+                              save the script..
+                              
+                              On your cmd change to directory to directory which contain the app.py (which inside the app folder that is                               inside the mediumapp folder)e.gyourfavouritedirectory/mediumapp/app/app.py
+                              
+                              Type:app.py (this is to run the application) 
+                              
+                              POSSIBLE ERRORS:
+                              NOT ACTIVATING THE VIRTUAL ENIVRONMENT
+                              WRONG PASTING OF CLIENTID,CLIENTSECRET in the app.py script.(Be careful)
+                              
+                              WRONG SETTING OF YOUR CALL BACK URL:
+                                 IF CONFUSE CHECK THIS EXAMPLE BELOW TO GET A GLUE..
+                                 E.G https://e9954aa6.ngrok.io/resultDisplay/callback/medium 
+                                 
+                             NOT INSTALLING MONGODB PROPERLY
+                             Please check the link below:
+                             link:https://docs.mongodb.com/manual/installation/
+                             
+                             If really confuse just send me a message via link:https://twitter.com/gloriaconcepto
+    
+ ### HOW TO RUN UNIT TEST : 
+                     Ensure mongodb is install and properly setup
+                     Ensure all dependencies are install
+                     Activate your Virtual environment
+                     Run the app.py 
+                     Run the unitestbasecase.py(which inside the app folder that is inside the mediumapp             
+                     folder)e.gyourfavouritedirectory/mediumapp/app/unitestbasecase.py
+                     
+                     
+                     POSSIBLE ERRORS:
+                       Running unitestbasecase.py before running app.py.Always run the app.py first before the  unitestbasecase.py 
+                       
+                       NOT ACTIVATING THE VIRTUAL ENIVRONMENT
+                        
+                        NOT INSTALLING MONGODB PROPERLY
+                             Please check the link below:
+                             link:https://docs.mongodb.com/manual/installation/
+                             
+                             If really confuse just send me a message via link:https://twitter.com/gloriaconcepto
+                     
+ 
+                                                     
+                                               
+ 
 ### Programming Language:
                
                Python 3.7.o
