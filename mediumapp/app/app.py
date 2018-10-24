@@ -22,13 +22,13 @@ def client_test():
       app.config['SECRET_KEY'] = '95f5522f07d05fc9daffab6b7aecbb131f526b3fa3ff4280'
       return app
 
-#========================app configuration=======================================
-#app = Flask(__name__)
-#app.config.from_object(__name__)
-#app.config['SECRET_KEY'] = '95f5522f07d05fc9daffab6b7aecbb131f526b3fa3ff4280'
+#========================APPLICATION ID AND SECRETS =======================================
+medium_app_id="45ec1ddf13cb"
+
+medium_app_secret = "b42623c0f2ee207a6872a76c0bc7c2eb88411a77"
 #==================ngrok link===================================================
 
-ngrok_link ="https://4b96f14b.ngrok.io"
+ngrok_link ="https://e9954aa6.ngrok.io"
 
 #=========================list to store rss details=============================
 #store posts title of the user
@@ -84,7 +84,8 @@ def get_current_publications(user_id,acess_token):
           url="https://api.medium.com/v1/users/{}/publications".format(user_id)   #?type=json
 
           token=acess_token
-          get_pub = Client(application_id="45ec1ddf13cb", application_secret="b42623c0f2ee207a6872a76c0bc7c2eb88411a77")
+
+          get_pub = Client(application_id= medium_app_id, application_secret=medium_app_secret)
 
           return requests.request("GET",url,headers = { "Accept": "application/json","Accept-Charset": "utf-8", "Authorization": "Bearer %s" % token,})
 
@@ -157,7 +158,7 @@ def call_back():
        if ( refresh_button_click==True):
             #authentication process to get the acess token
             # Exchange the authorization code for an access token.
-            client = Client(application_id="45ec1ddf13cb", application_secret="b42623c0f2ee207a6872a76c0bc7c2eb88411a77")
+            client = Client(application_id=medium_app_id, application_secret=medium_app_secret)
             #get_pub = Client(application_id="45ec1ddf13cb", application_secret="b42623c0f2ee207a6872a76c0bc7c2eb88411a77")
             secret = request.args.get("code")
             auth = client.exchange_authorization_code(secret,"{}/resultDisplay/callback/medium".format(ngrok_link))
@@ -260,7 +261,7 @@ def about():
 @app.route('/resultDisplay/')
 def resultDisplay():
       #intialisation
-    client = Client(application_id="45ec1ddf13cb", application_secret="b42623c0f2ee207a6872a76c0bc7c2eb88411a77")
+    client = Client(application_id=medium_app_id, application_secret=medium_app_secret)
     #post="Post"
     #client._request(post,"https://86acd90c.ngrok.io/resultDisplay/")
 
@@ -292,6 +293,7 @@ def return_about_page_reguest():
 def medium_test():
     medium_rss=get_medium("mmekutmfonedet")
     return type(medium_rss)
+
 #===============================================================================
 
 if __name__ == "__main__":
