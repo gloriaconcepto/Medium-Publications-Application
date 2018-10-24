@@ -21,13 +21,15 @@ myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 class DataBase(object):
     ''' A Class That Stores all the database methods'''
 
-    def __init__(self):
+    def __init__(self,database_name):
         #intialise the object and set properties
-        self.database_name = myclient["mediumdatabase"]
+        self.database_name = myclient[database_name]
         self.database_collection = self.database_name["userdetails"]
         self.data_value={}
         #Properties that help in actual storing it to mongo
         self.data_storage=None
+        #Properties to store the database_name as string.. to be use for unit test..
+        self.database_name_string=database_name
 
 
     def insert_data(self,user_details,publication_details,time):
@@ -82,8 +84,20 @@ class DataBase(object):
             return True
         else:
             return False
+    #fuction to delete the database...
+    def delete_data(self):
+        '''Delete entire database'''
+        self.data_storage=self.database_collection.delete_many({})
 
+    #method to check if there is a connection with the database..
+    def is_it_connected_to_database(self):
+        '''This method will be used mainly for unit testing database'''
+        db_list=myclient.list_database_names()
 
+        if self.database_name_string in db_list:
+             return True
+        else:
+            return False
 
 
 def main():
