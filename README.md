@@ -16,7 +16,7 @@ the following:
 
 Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
 
-##SET UP:
+## SET UP:
  
 ### Programming Language:
                
