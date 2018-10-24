@@ -16,15 +16,19 @@ from markupsafe import Markup
 from databaseapi import DataBase
 #data for time..
 from datetime import datetime
-
+def client_test():
+      app = Flask(__name__)
+      app.config.from_object(__name__)
+      app.config['SECRET_KEY'] = '95f5522f07d05fc9daffab6b7aecbb131f526b3fa3ff4280'
+      return app
 
 #========================app configuration=======================================
-app = Flask(__name__)
-app.config.from_object(__name__)
-app.config['SECRET_KEY'] = '95f5522f07d05fc9daffab6b7aecbb131f526b3fa3ff4280'
+#app = Flask(__name__)
+#app.config.from_object(__name__)
+#app.config['SECRET_KEY'] = '95f5522f07d05fc9daffab6b7aecbb131f526b3fa3ff4280'
 #==================ngrok link===================================================
 
-ngrok_link ="https://32527600.ngrok.io"
+ngrok_link ="https://4b96f14b.ngrok.io"
 
 #=========================list to store rss details=============================
 #store posts title of the user
@@ -44,12 +48,13 @@ image_pub=[]
 url_pub=[]
 #===============================================================================
 
-
-database=DataBase()
+#create a database....
+database_name="mediumdatabase"
+database=DataBase(database_name)
 
 #set refresh button click to false
 refresh_button_click=False
-
+app=client_test()
 
 
 #class for the search form
@@ -269,7 +274,25 @@ def resultDisplay():
     #auth = client.exchange_authorization_code("YOUR_AUTHORIZATION_CODE", "https://b351e15d.ngrok.io/resultDisplay/")
 
     #return render_template('resultDisplay.html')
+#======================================UNIT TESTING FUNCTION====================
+def home_page_response():
+    return 'http://127.0.0.1:5000/'
 
+def about_page_response():
+    return 'http://127.0.0.1:5000/about/'
+
+def return_home_page_reguest():
+
+   return requests.get('http://127.0.0.1:5000/')
+
+def return_about_page_reguest():
+
+   return requests.get('http://127.0.0.1:5000/about/')
+
+def medium_test():
+    medium_rss=get_medium("mmekutmfonedet")
+    return type(medium_rss)
+#===============================================================================
 
 if __name__ == "__main__":
    # app.secret_key = os.urandom(12)
