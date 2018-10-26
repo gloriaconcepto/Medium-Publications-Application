@@ -7,7 +7,7 @@ the following:
 
 2) The user's avatar/image if available.
 
-3)Number of publications subscribe by the user
+3)  Number of publications subscribe by the user
  
 4) Links to user's 5 recent posts.
 
