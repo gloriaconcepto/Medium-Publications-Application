@@ -28,7 +28,7 @@ medium_app_id="45ec1ddf13cb"
 medium_app_secret = "b42623c0f2ee207a6872a76c0bc7c2eb88411a77"
 #==================ngrok link===================================================
 
-ngrok_link ="https://e9954aa6.ngrok.io"
+ngrok_link ="https://1b23e4f8.ngrok.io"
 
 #=========================list to store rss details=============================
 #store posts title of the user
@@ -182,7 +182,7 @@ def call_back():
             data_list=json_data_type["data"]
 
             #capture the data in the database....
-            database.insert_data(user,data_list,datetime.now())
+            database.insert_data(user_profile,user,data_list,datetime.now())
 
             # To determined the length of the publication..
             count_length = len(data_list)
