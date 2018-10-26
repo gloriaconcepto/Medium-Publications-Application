@@ -10,12 +10,15 @@
 #------------------------------------------------------------------------------
 import pymongo
 from datetime import datetime
+from envparse  import env
+#from environs import Env
 
 
+mongo_url="mongodb://mmk:mediumdatabase1@ds115592.mlab.com:15592/mediumdatabase"
 
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+#myclient = pymongo.MongoClient("mongodb://localhost:27017/")
 
-
+myclient =pymongo.MongoClient(mongo_url,connectTimeoutMs=30000)
 
 
 class DataBase(object):
@@ -32,15 +35,17 @@ class DataBase(object):
         self.database_name_string=database_name
 
 
-    def insert_data(self,user_details,publication_details,time):
+    def insert_data(self,name_of_account,user_details,publication_details,time):
          '''Function to insert database'''
 
         #check if user data already in the database
         #then just update
 
+         #check if it have the user id
          if(self.database_collection.count()>=1):
               #first get rid of all datas
-
+               #update base on the user details
+               #if(name_of_account==self.data_value['userdetails'])
                self.data_storage=self.database_collection.delete_many({})
                #insert the data
                self.data_value['userdetails']=user_details
