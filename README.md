@@ -7,7 +7,7 @@ the following:
 
 2) The user's avatar/image if available.
 
-3)Number of publications subscribe by the user
+3)  Number of publications subscribe by the user
  
 4) Links to user's 5 recent posts.
 
@@ -16,6 +16,9 @@ the following:
 
 Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
 
+## HEROKU LINK TO THE APP:
+Link: https://gloriamediumapp2.herokuapp.com/
+               
 ## SET UP FOR INSTALLING THE APP AND RUN UNIT TEST :
                                                    
    1) Clone the repository to your local machine favourite directories:
@@ -40,7 +43,7 @@ Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
         
         
   ### HOW TO RUN THE MAIN APP :
-                               Install Mongodb
+                               Set up your mlab(https://mlab.com) or use the default setting.
                                Install ngrok if not install in your system already
                                Run ngrok 
                                In the ngrok type:  ngrok http 5000
@@ -77,14 +80,14 @@ Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
                                  IF CONFUSE CHECK THIS EXAMPLE BELOW TO GET A GLUE..
                                  E.G https://e9954aa6.ngrok.io/resultDisplay/callback/medium 
                                  
-                             NOT INSTALLING MONGODB PROPERLY
+                             NOT INSTALLING MLAB PROPERLY
                              Please check the link below:
-                             link:https://docs.mongodb.com/manual/installation/
+                             link:https://docs.mlab.com/
                              
                              If really confuse just send me a message via link:https://twitter.com/gloriaconcepto
     
  ### HOW TO RUN UNIT TEST : 
-                     Ensure mongodb is install and properly setup
+                     Ensure mlab is properly setup or use the default setting
                      Ensure all dependencies are install
                      Activate your Virtual environment
                      Run the app.py 
@@ -97,9 +100,9 @@ Trello Project Link:https://trello.com/b/HIH0JJck/medium-publication-app
                        
                        NOT ACTIVATING THE VIRTUAL ENIVRONMENT
                         
-                        NOT INSTALLING MONGODB PROPERLY
+                         NOT INSTALLING MLAB PROPERLY
                              Please check the link below:
-                             link:https://docs.mongodb.com/manual/installation/
+                             link:https://docs.mlab.com/
                              
                              If really confuse just send me a message via link:https://twitter.com/gloriaconcepto
                      
