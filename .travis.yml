@@ -1,17 +1,10 @@
 language: python
-matrix:
-  include:
-    - python: 2.7
-    - python: 3.4
-    - python: 3.5
-    - python: 3.6
-    - python: 3.7
-      dist: xenial
-      sudo: true
+python:
+      - "3.6"
 
 install:
-- pip install -r mediumapp/requirements.txt
+       - pip install -r mediumapp/requirements.txt
 
 script: 
-- python mediumapp/app/app.py
-- python  mediumapp/app/unitestbasecase.py
+      - python mediumapp/app/app.py
+      - python  mediumapp/app/unitestbasecase.py
