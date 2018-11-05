@@ -5,6 +5,10 @@ python:
 install:
        - pip install -r mediumapp/requirements.txt
 
+
+services:
+  - mongodb
+  
 script: 
       - python mediumapp/app/app.py
       - python  mediumapp/app/unitestbasecase.py
