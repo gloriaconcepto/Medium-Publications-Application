@@ -16,6 +16,7 @@ from markupsafe import Markup
 from databaseapi import DataBase
 #data for time..
 from datetime import datetime
+
 def client_test():
       app = Flask(__name__)
       app.config.from_object(__name__)
@@ -28,7 +29,7 @@ medium_app_id="45ec1ddf13cb"
 medium_app_secret = "b42623c0f2ee207a6872a76c0bc7c2eb88411a77"
 #==================ngrok link===================================================
 
-ngrok_link ="https://1b23e4f8.ngrok.io"
+ngrok_link =""
 
 #=========================list to store rss details=============================
 #store posts title of the user
